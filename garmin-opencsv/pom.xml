@@ -23,13 +23,13 @@
         <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
 
         <!-- testing artifact versions -->
-        <junit.platform.version>1.0.2</junit.platform.version>
-        <junit.jupiter.version>5.0.2</junit.jupiter.version>
+        <junit.platform.version>1.0.3</junit.platform.version>
+        <junit.jupiter.version>5.0.3</junit.jupiter.version>
         <hamcrest.version>2.0.0.0</hamcrest.version>
 
         <!-- maven plugin versions (in alphabetical order) -->
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
-        <!-- junit-platform-surefire-provider is still not compatible with 2.20.1 -->
+        <!-- junit 5.0.x is blocked at 2.19.1, junit 5.1 will work with 2.20.1 : https://github.com/junit-team/junit5/issues/809 -->
         <maven.failsafe.plugin.version>2.19.1</maven.failsafe.plugin.version>
         <maven.surefire.plugin.version>${maven.failsafe.plugin.version}</maven.surefire.plugin.version>
     </properties>
