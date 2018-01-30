@@ -1,0 +1,6 @@
+<ruleset comparisonMethod="maven">
+    <ignoreVersions>
+        <!-- ignore all versions with qualifiers, e.g. 5.1.0-M2 -->
+        <ignoreVersion type="regex">\d+\.\d+\.\d+-.+</ignoreVersion>
+    </ignoreVersions>
+</ruleset>

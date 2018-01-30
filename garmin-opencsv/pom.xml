@@ -27,11 +27,14 @@
         <junit.jupiter.version>5.0.3</junit.jupiter.version>
         <hamcrest.version>2.0.0.0</hamcrest.version>
 
-        <!-- maven plugin versions (in alphabetical order) -->
+        <!-- apache maven plugin versions (in alphabetical order) -->
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
         <!-- junit 5.0.x is blocked at 2.19.1, junit 5.1 will work with 2.20.1 : https://github.com/junit-team/junit5/issues/809 -->
         <maven.failsafe.plugin.version>2.19.1</maven.failsafe.plugin.version>
         <maven.surefire.plugin.version>${maven.failsafe.plugin.version}</maven.surefire.plugin.version>
+
+        <!-- non apache maven plugin versions -->
+        <versions.plugin.version>2.5</versions.plugin.version>
     </properties>
 
     <dependencies>
@@ -106,7 +109,20 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions.plugin.version}</version>
+                <configuration>
+                    <!-- this is from https://stackoverflow.com/a/33727833/3686 -->
+                    <rulesUri>file:///${session.executionRootDirectory}/maven-version-rules.xml</rulesUri>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
+    <prerequisites>
+        <!-- gives a warning, but the versions plugin works better with this than with the enforcer plugin -->
+        <maven>3.0</maven>
+    </prerequisites>
 </project>
