@@ -26,7 +26,7 @@ class GarminExportReaderTest {
     void parse_activities_onlyRunning() throws IOException {
 
         String csvfile = getClass().getClassLoader().getResource("activities.csv").getFile();
-        List<Activity> activities = GarminExportReader.parse(csvfile, "Running");
+        List<Activity> activities = GarminExportReader.parse(csvfile, "running");
 
         assertThat(activities.size(), is(2));
         assertThat(activities.get(0).getName(), is("Courtepin 15"));
