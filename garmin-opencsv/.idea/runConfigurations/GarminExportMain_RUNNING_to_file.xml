@@ -2,7 +2,7 @@
   <configuration default="false" name="GarminExportMain RUNNING to file" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="ch.schlau.pesche.snppts.csv.garmin.opencsv.GarminExportMain" />
     <module name="garmin-opencsv" />
-    <option name="PROGRAM_PARAMETERS" value="-f ../../../sports/activities.csv -o target/fit.csv -v -s -t running" />
+    <option name="PROGRAM_PARAMETERS" value="-f ../../../sports/activities.csv -o target/fit.csv -v -s -t Running" />
     <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     <extension name="coverage">
       <pattern>
