@@ -31,18 +31,39 @@ public class Fit {
     private Double gradeAdjustedPace;
 
     @CsvBindByPosition(position = 8)
-    private String name;
+    private Double gap;
 
     @CsvBindByPosition(position = 9)
-    private Integer heartRate;
+    private Double ans;
 
     @CsvBindByPosition(position = 10)
-    private Integer calories;
+    private String name;
 
     @CsvBindByPosition(position = 11)
-    private Integer caloriesPercent;
+    private Integer heartRate;
 
     @CsvBindByPosition(position = 12)
+    private Integer calories;
+
+    @CsvBindByPosition(position = 13)
+    private Integer vo2max;
+
+    @CsvBindByPosition(position = 14)
+    private String place;
+
+    @CsvBindByPosition(position = 15)
+    private String finisherM;
+
+    @CsvBindByPosition(position = 16)
+    private String finisherTotal;
+
+    @CsvBindByPosition(position = 17)
+    private String percentile;
+
+    @CsvBindByPosition(position = 18)
+    private String relativePercent;
+
+    @CsvBindByPosition(position = 19)
     private String notes;
 
     public LocalDate getDate() {
@@ -109,6 +130,22 @@ public class Fit {
         this.gradeAdjustedPace = gradeAdjustedPace;
     }
 
+    public Double getGap() {
+        return gap;
+    }
+
+    public void setGap(Double gap) {
+        this.gap = gap;
+    }
+
+    public Double getAns() {
+        return ans;
+    }
+
+    public void setAns(Double ans) {
+        this.ans = ans;
+    }
+
     public String getName() {
         return name;
     }
@@ -133,12 +170,52 @@ public class Fit {
         this.calories = calories;
     }
 
-    public Integer getCaloriesPercent() {
-        return caloriesPercent;
+    public Integer getVo2max() {
+        return vo2max;
     }
 
-    public void setCaloriesPercent(Integer caloriesPercent) {
-        this.caloriesPercent = caloriesPercent;
+    public void setVo2max(Integer vo2max) {
+        this.vo2max = vo2max;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public String getFinisherM() {
+        return finisherM;
+    }
+
+    public void setFinisherM(String finisherM) {
+        this.finisherM = finisherM;
+    }
+
+    public String getFinisherTotal() {
+        return finisherTotal;
+    }
+
+    public void setFinisherTotal(String finisherTotal) {
+        this.finisherTotal = finisherTotal;
+    }
+
+    public String getPercentile() {
+        return percentile;
+    }
+
+    public void setPercentile(String percentile) {
+        this.percentile = percentile;
+    }
+
+    public String getRelativePercent() {
+        return relativePercent;
+    }
+
+    public void setRelativePercent(String relativePercent) {
+        this.relativePercent = relativePercent;
     }
 
     public String getNotes() {

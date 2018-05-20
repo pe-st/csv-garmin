@@ -21,10 +21,17 @@ public interface FitMapper {
     @Mapping(target = "minutes", ignore = true)
     @Mapping(target = "pace", ignore = true)
     @Mapping(target = "gradeAdjustedPace", ignore = true)
+    @Mapping(target = "gap", ignore = true)
+    @Mapping(target = "ans", ignore = true)
     @Mapping(target = "name", source = "name")
     @Mapping(target = "heartRate", source = "heartRate")
     @Mapping(target = "calories", source = "calories")
-    @Mapping(target = "caloriesPercent", ignore = true)
+    @Mapping(target = "vo2max", ignore = true)
+    @Mapping(target = "place", ignore = true)
+    @Mapping(target = "finisherM", ignore = true)
+    @Mapping(target = "finisherTotal", ignore = true)
+    @Mapping(target = "percentile", ignore = true)
+    @Mapping(target = "relativePercent", ignore = true)
     @Mapping(target = "notes", source = "description")
     Fit activityToFit(Activity activity);
 
