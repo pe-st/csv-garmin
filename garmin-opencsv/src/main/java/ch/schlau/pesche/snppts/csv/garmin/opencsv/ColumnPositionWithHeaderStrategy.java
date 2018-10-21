@@ -2,6 +2,7 @@ package ch.schlau.pesche.snppts.csv.garmin.opencsv;
 
 import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.MappingStrategy;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 /**
  * Modifies the existing {@link ColumnPositionMappingStrategy} to print headers,
@@ -20,7 +21,7 @@ public class ColumnPositionWithHeaderStrategy<T> extends ColumnPositionMappingSt
      * thus the type must be set explicitly before doing any work.
      *
      * @param clazz the class of the generic type T; as it is not directly
-     *              accesible because of type erasure, it must be passed in.
+     *              accessible because of type erasure, it must be passed in.
      */
     public ColumnPositionWithHeaderStrategy(Class<T> clazz) {
         super();
@@ -28,7 +29,19 @@ public class ColumnPositionWithHeaderStrategy<T> extends ColumnPositionMappingSt
     }
 
     @Override
-    public String[] generateHeader() {
-        return getColumnMapping();
+    public String[] generateHeader(T bean) throws CsvRequiredFieldEmptyException {
+
+        // This code is copied from com.opencsv.bean.AbstractMappingStrategy.generateHeader,
+        // but to call it with super.super.generateHeader() is not allowed by Java...
+
+        // Always take what's been given or previously determined first.
+        if (headerIndex.isEmpty()) {
+            String[] header = getFieldMap().generateHeader(bean);
+            headerIndex.initializeHeaderIndex(header);
+            return header;
+        }
+
+        // Otherwise, put headers in the right places.
+        return headerIndex.getHeaderIndex();
     }
 }

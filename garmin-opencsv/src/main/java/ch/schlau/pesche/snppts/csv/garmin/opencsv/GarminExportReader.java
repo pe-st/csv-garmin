@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.MappingStrategy;
-import com.opencsv.bean.opencsvUtils;
+import com.opencsv.bean.OpencsvUtils;
 
 public class GarminExportReader {
 
@@ -41,7 +41,7 @@ public class GarminExportReader {
 
         // unfortunately the mapping strategy chosen by the reader isn't accessible,
         // so we use the same code as CsvToBeanBuilder.build() to determine it.
-        final MappingStrategy<Activity> strategy = opencsvUtils.determineMappingStrategy(Activity.class, null);
+        final MappingStrategy<Activity> strategy = OpencsvUtils.determineMappingStrategy(Activity.class, null);
 
         return reader
                 .withMappingStrategy(strategy)

@@ -41,9 +41,9 @@ class GarminExportWriterTest {
         // then
         try (Scanner s = new Scanner(tempFile).useDelimiter("\\Z")) {
             String contents = s.next();
-            assertThat(contents, is("\"DATE\",\"KM\",\"SHOES\",\"ELEVATIONGAIN\",\"MMSS\",\"MINUTES\","
-                    + "\"PACE\",\"GRADEADJUSTEDPACE\",\"GAP\",\"ANS\",\"NAME\",\"HEARTRATE\",\"CALORIES\","
-                    + "\"VO2MAX\",\"PLACE\",\"FINISHERM\",\"FINISHERTOTAL\",\"PERCENTILE\",\"RELATIVEPERCENT\",\"NOTES\"\n"
+            assertThat(contents, is("\"date\",\"km\",\"shoes\",\"elevationGain\",\"mmSs\",\"minutes\","
+                    + "\"pace\",\"gradeAdjustedPace\",\"gap\",\"ans\",\"name\",\"heartRate\",\"calories\","
+                    + "\"vo2max\",\"place\",\"finisherM\",\"finisherTotal\",\"percentile\",\"relativePercent\",\"notes\"\n"
                     + "\"2017-06-11\",\"0.0\",\"\",\"\",\"0.0\","
                     + "\"\",\"\",\"\",\"\",\"\",\"Parcours\",\"\",\"\","
                     + "\"\",\"\",\"\",\"\",\"\",\"\",\"\""));

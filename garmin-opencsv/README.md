@@ -17,8 +17,8 @@ Libraries used in this example:
 
 There are sibling example applications using other CSV parser libraries:
 
-- Using [Apache Commons CSV][commonscsv]: https://github.com/pe-st/snppts/tree/master/csv/garmin-commons-csv
-- Using [Super CSV][supercsv]: https://github.com/pe-st/snppts/tree/master/csv/garmin-supercsv 
+- Using [Apache Commons CSV][commonscsv]: https://github.com/pe-st/csv-garmin/tree/master/garmin-commons-csv
+- Using [Super CSV][supercsv]: https://github.com/pe-st/csv-garmin/tree/master/garmin-supercsv
 
 
 [opencsv]: http://opencsv.sourceforge.net/
@@ -26,5 +26,4 @@ There are sibling example applications using other CSV parser libraries:
 [supercsv]: https://super-csv.github.io/super-csv/index.html
 [jcmd]: http://www.jcommander.org/
 [mapstruct]: http://mapstruct.org/
-[exporter]: https://github.com/kjkjava/garmin-connect-export 
-[exporter-ps]: https://github.com/pe-st/garmin-connect-export 
+[exporter]: https://github.com/pe-st/garmin-connect-export 
