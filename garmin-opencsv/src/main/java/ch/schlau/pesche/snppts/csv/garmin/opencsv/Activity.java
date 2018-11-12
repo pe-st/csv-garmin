@@ -20,7 +20,7 @@ public class Activity {
     @CsvBindByName(column = "Description")
     private String description;
 
-    @CsvCustomBindByName(column = "Begin Timestamp", converter = LocalDateTimeConverterAlmostRfc1123.class)
+    @CsvCustomBindByName(column = "Start Time", converter = LocalDateTimeConverterAlmostRfc1123.class)
     private LocalDateTime beginTimestamp;
 
     @CsvBindByName(column = ACTIVITY_TYPE)

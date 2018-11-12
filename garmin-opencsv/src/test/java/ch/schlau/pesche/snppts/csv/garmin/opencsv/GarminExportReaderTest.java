@@ -19,7 +19,7 @@ class GarminExportReaderTest {
 
         assertThat(activities.size(), is(7));
         assertThat(activities.get(0).getName(), is("Oberwald-Münster (Gommer Höhenweg)"));
-        assertThat(activities.get(0).getBeginTimestamp(), is(LocalDateTime.parse("2017-06-11T11:02")));
+        assertThat(activities.get(0).getBeginTimestamp(), is(LocalDateTime.parse("2017-06-11T11:02:22")));
     }
 
     @Test
@@ -30,6 +30,6 @@ class GarminExportReaderTest {
 
         assertThat(activities.size(), is(2));
         assertThat(activities.get(0).getName(), is("Courtepin 15"));
-        assertThat(activities.get(0).getBeginTimestamp(), is(LocalDateTime.parse("2016-03-20T09:59")));
+        assertThat(activities.get(0).getBeginTimestamp(), is(LocalDateTime.parse("2016-03-20T09:59:15")));
     }
 }
