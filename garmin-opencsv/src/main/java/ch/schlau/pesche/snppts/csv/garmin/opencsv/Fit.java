@@ -64,6 +64,9 @@ public class Fit {
     private String relativePercent;
 
     @CsvBindByPosition(position = 19)
+    private String fairKaplan;
+
+    @CsvBindByPosition(position = 20)
     private String notes;
 
     public LocalDate getDate() {
@@ -216,6 +219,14 @@ public class Fit {
 
     public void setRelativePercent(String relativePercent) {
         this.relativePercent = relativePercent;
+    }
+
+    public String getFairKaplan() {
+        return fairKaplan;
+    }
+
+    public void setFairKaplan(String fairKaplan) {
+        this.fairKaplan = fairKaplan;
     }
 
     public String getNotes() {

@@ -1,11 +1,13 @@
 package ch.schlau.pesche.snppts.csv.garmin.opencsv;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 
-import ch.schlau.pesche.snppts.csv.garmin.opencsv.converter.LocalDateTimeConverterAlmostRfc1123;
+import ch.schlau.pesche.snppts.csv.garmin.opencsv.converter.DurationConverter;
+import ch.schlau.pesche.snppts.csv.garmin.opencsv.converter.LocalDateTimeConverter;
 
 public class Activity {
 
@@ -20,7 +22,7 @@ public class Activity {
     @CsvBindByName(column = "Description")
     private String description;
 
-    @CsvCustomBindByName(column = "Start Time", converter = LocalDateTimeConverterAlmostRfc1123.class)
+    @CsvCustomBindByName(column = "Start Time", converter = LocalDateTimeConverter.class)
     private LocalDateTime beginTimestamp;
 
     @CsvBindByName(column = ACTIVITY_TYPE)
@@ -29,17 +31,23 @@ public class Activity {
     @CsvBindByName(column = "Average Heart Rate (bpm)")
     private Integer heartRate;
 
-    @CsvBindByName(column = "Calories (Raw)")
+    @CsvBindByName(column = "Calories")
     private Double calories;
 
-    @CsvBindByName(column = "Duration (Raw Seconds)")
-    private double duration;
+    @CsvBindByName(column = "VO2max")
+    private Double vo2max;
 
-    @CsvBindByName(column = "Distance (Raw)")
+    @CsvCustomBindByName(column = "Duration (h:m:s)", converter = DurationConverter.class)
+    private Duration duration;
+
+    @CsvBindByName(column = "Distance (km)")
     private double distance;
 
-    @CsvBindByName(column = "Elevation Gain (Raw)")
+    @CsvBindByName(column = "Elevation Gain (m)")
     private Double elevationGain;
+
+    @CsvBindByName(column = "Gear")
+    private String gear;
 
     public String getId() {
         return id;
@@ -97,11 +105,19 @@ public class Activity {
         this.calories = calories;
     }
 
-    public double getDuration() {
+    public Double getVo2max() {
+        return vo2max;
+    }
+
+    public void setVo2max(Double vo2max) {
+        this.vo2max = vo2max;
+    }
+
+    public Duration getDuration() {
         return duration;
     }
 
-    public void setDuration(double duration) {
+    public void setDuration(Duration duration) {
         this.duration = duration;
     }
 
@@ -119,5 +135,13 @@ public class Activity {
 
     public void setElevationGain(Double elevationGain) {
         this.elevationGain = elevationGain;
+    }
+
+    public String getGear() {
+        return gear;
+    }
+
+    public void setGear(String gear) {
+        this.gear = gear;
     }
 }

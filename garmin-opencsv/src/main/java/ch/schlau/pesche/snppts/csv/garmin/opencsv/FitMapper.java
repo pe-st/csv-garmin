@@ -1,5 +1,6 @@
 package ch.schlau.pesche.snppts.csv.garmin.opencsv;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -15,7 +16,7 @@ public interface FitMapper {
 
     @Mapping(target = "date", source = "beginTimestamp")
     @Mapping(target = "km", source = "distance")
-    @Mapping(target = "shoes", ignore = true)
+    @Mapping(target = "shoes", source = "gear", qualifiedByName = "ignoreNonInt")
     @Mapping(target = "elevationGain", source = "elevationGain")
     @Mapping(target = "mmSs", source = "duration", qualifiedByName = "MMSS")
     @Mapping(target = "minutes", ignore = true)
@@ -26,12 +27,13 @@ public interface FitMapper {
     @Mapping(target = "name", source = "name")
     @Mapping(target = "heartRate", source = "heartRate")
     @Mapping(target = "calories", source = "calories")
-    @Mapping(target = "vo2max", ignore = true)
+    @Mapping(target = "vo2max", source = "vo2max")
     @Mapping(target = "place", ignore = true)
     @Mapping(target = "finisherM", ignore = true)
     @Mapping(target = "finisherTotal", ignore = true)
     @Mapping(target = "percentile", ignore = true)
     @Mapping(target = "relativePercent", ignore = true)
+    @Mapping(target = "fairKaplan", ignore = true)
     @Mapping(target = "notes", source = "description")
     Fit activityToFit(Activity activity);
 
@@ -42,16 +44,31 @@ public interface FitMapper {
     }
 
     /**
-     * Convert seconds into minutes with the seconds as decimal fraction from 00 to 59
+     * Convert duration into minutes with the seconds as decimal fraction from 00 to 59
      *
      * @param duration
      * @return
      */
     @Named("MMSS")
-    default double mmss(double duration) {
-        int minutes = (int) (duration / 60);
-        long seconds = Math.round(duration % 60);
+    default double mmss(Duration duration) {
+        if (duration != null) {
+            int minutes = (int) (duration.getSeconds() / 60);
+            long seconds = Math.round(duration.getSeconds() % 60);
 
-        return minutes + (double) seconds / 100;
+            return minutes + (double) seconds / 100;
+        }
+        return 0.0;
+    }
+
+    @Named("ignoreNonInt")
+    default Integer ignoreNonInt(String gear) {
+        if (gear != null && !gear.isEmpty()) {
+            try {
+                return Integer.valueOf(gear);
+            } catch (NumberFormatException e) {
+                return null;
+            }
+        }
+        return null;
     }
 }

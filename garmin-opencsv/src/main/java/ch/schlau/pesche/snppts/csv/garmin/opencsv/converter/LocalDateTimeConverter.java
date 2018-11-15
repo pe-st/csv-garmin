@@ -13,7 +13,7 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
  *
  * @param <T>
  */
-public class LocalDateTimeConverterAlmostRfc1123<T> extends AbstractBeanField<T> {
+public class LocalDateTimeConverter<T> extends AbstractBeanField<T> {
 
     @Override
     protected Object convert(String value) throws CsvDataTypeMismatchException, CsvConstraintViolationException {

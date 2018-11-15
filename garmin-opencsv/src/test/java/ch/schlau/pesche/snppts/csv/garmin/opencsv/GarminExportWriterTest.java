@@ -43,10 +43,10 @@ class GarminExportWriterTest {
             String contents = s.next();
             assertThat(contents, is("\"date\",\"km\",\"shoes\",\"elevationGain\",\"mmSs\",\"minutes\","
                     + "\"pace\",\"gradeAdjustedPace\",\"gap\",\"ans\",\"name\",\"heartRate\",\"calories\","
-                    + "\"vo2max\",\"place\",\"finisherM\",\"finisherTotal\",\"percentile\",\"relativePercent\",\"notes\"\n"
+                    + "\"vo2max\",\"place\",\"finisherM\",\"finisherTotal\",\"percentile\",\"relativePercent\",\"fairKaplan\",\"notes\"\n"
                     + "\"2017-06-11\",\"0.0\",\"\",\"\",\"0.0\","
                     + "\"\",\"\",\"\",\"\",\"\",\"Parcours\",\"\",\"\","
-                    + "\"\",\"\",\"\",\"\",\"\",\"\",\"\""));
+                    + "\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\""));
         }
     }
 

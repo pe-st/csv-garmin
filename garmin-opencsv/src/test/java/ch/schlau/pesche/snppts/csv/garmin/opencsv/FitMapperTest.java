@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -18,7 +19,7 @@ class FitMapperTest {
         Activity activity = new Activity();
         activity.setBeginTimestamp(LocalDateTime.parse("2017-06-11T11:02"));
         activity.setName("Murtenlauf");
-        activity.setDuration(80);
+        activity.setDuration(Duration.ofSeconds(80));
         activity.setDistance(42.195);
         activity.setElevationGain(365.38);
 
@@ -53,8 +54,8 @@ class FitMapperTest {
 
     @Test
     public void mmss() {
-        assertThat(FitMapper.INSTANCE.mmss(30.0), is(0.30));
-        assertThat(FitMapper.INSTANCE.mmss(80.4), is(1.20));
-        assertThat(FitMapper.INSTANCE.mmss(80.6), is(1.21));
+        assertThat(FitMapper.INSTANCE.mmss(Duration.ofSeconds(30)), is(0.30));
+        assertThat(FitMapper.INSTANCE.mmss(Duration.ofSeconds(80)), is(1.20));
+        assertThat(FitMapper.INSTANCE.mmss(Duration.ofSeconds(81)), is(1.21));
     }
 }
