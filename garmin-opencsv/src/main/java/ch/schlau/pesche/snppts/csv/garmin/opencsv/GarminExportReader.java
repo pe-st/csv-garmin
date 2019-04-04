@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.List;
 
 import com.opencsv.bean.CsvToBeanBuilder;
-import com.opencsv.bean.MappingStrategy;
-import com.opencsv.bean.OpencsvUtils;
 
 public class GarminExportReader {
 
@@ -39,13 +37,9 @@ public class GarminExportReader {
     public static List<Activity> parse(String filename, String activityType) throws IOException {
         CsvToBeanBuilder<Activity> reader = new CsvToBeanBuilder<>(new FileReader(filename));
 
-        // unfortunately the mapping strategy chosen by the reader isn't accessible,
-        // so we use the same code as CsvToBeanBuilder.build() to determine it.
-        final MappingStrategy<Activity> strategy = OpencsvUtils.determineMappingStrategy(Activity.class, null);
-
         return reader
-                .withMappingStrategy(strategy)
-                .withFilter(new ActivityTypeFilter(strategy, activityType))
+                .withType(Activity.class)
+                .withVerifier(new ActivityTypeFilter(activityType))
                 .build()
                 .parse();
     }

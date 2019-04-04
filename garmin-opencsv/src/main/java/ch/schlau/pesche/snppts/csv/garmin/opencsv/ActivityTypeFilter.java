@@ -1,29 +1,22 @@
 package ch.schlau.pesche.snppts.csv.garmin.opencsv;
 
-import com.opencsv.bean.CsvToBeanFilter;
-import com.opencsv.bean.MappingStrategy;
+import com.opencsv.bean.BeanVerifier;
+import com.opencsv.exceptions.CsvConstraintViolationException;
 
-public class ActivityTypeFilter implements CsvToBeanFilter {
+public class ActivityTypeFilter implements BeanVerifier<Activity> {
 
-    private final MappingStrategy strategy;
     private final String activityType;
 
-    public ActivityTypeFilter(MappingStrategy strategy, String activityType) {
-        this.strategy = strategy;
+    public ActivityTypeFilter(String activityType) {
         this.activityType = activityType;
     }
 
     @Override
-    public boolean allowLine(String[] line) {
+    public boolean verifyBean(Activity bean) throws CsvConstraintViolationException {
         if (activityType == null || activityType.isEmpty()) {
             return true;
         }
 
-        Integer index = strategy.getColumnIndex(Activity.ACTIVITY_TYPE);
-        if (index != null) {
-            String value = line[index];
-            return activityType.equals(value);
-        }
-        return true;
+        return activityType.equals(bean.getActivityType());
     }
 }
